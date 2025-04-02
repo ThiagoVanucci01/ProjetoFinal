@@ -1,4 +1,4 @@
-import "./Header.module.css";
+import styles from"./Header.module.css";
 import { Link } from "react-router";
 import Logo from "../../assets/logo.png";
 
@@ -6,8 +6,8 @@ const Header = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-gray-500">
       <div className="container">
-        <Link className="navbar-brand" to="/">
-          <img src={Logo} alt="" className="logo"/>
+        <Link className="navbar-brand " to="/">
+          <img src={Logo} alt="" className={styles.tamanho} />
         </Link>
         <button
           className="navbar-toggler"

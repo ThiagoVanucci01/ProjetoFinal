@@ -4,13 +4,13 @@ import Imagem3 from "../assets/image1.png";
 
 const Home = () => {
   return (
-    <div className="container mt-5">
+    <div className="container p-0">
       {/* Carrossel de Imagens */}
       <div
         id="carouselExampleIndicators"
-        className="carousel slide mt-3 mx-auto"
+        className="carousel slide mx-auto"
         data-bs-ride="carousel"
-        style={{ maxWidth: "600px" }} // Define a largura máxima do carrossel
+        style={{ maxWidth: "800px" }} // Define a largura máxima do carrossel
       >
         <div className="carousel-indicators">
           <button
@@ -51,7 +51,10 @@ const Home = () => {
           data-bs-target="#carouselExampleIndicators"
           data-bs-slide="prev"
         >
-          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span
+            className="carousel-control-prev-icon"
+            aria-hidden="true"
+          ></span>
           <span className="visually-hidden">Anterior</span>
         </button>
         <button
@@ -60,18 +63,29 @@ const Home = () => {
           data-bs-target="#carouselExampleIndicators"
           data-bs-slide="next"
         >
-          <span className="carousel-control-next-icon" aria-hidden="true"></span>
+          <span
+            className="carousel-control-next-icon"
+            aria-hidden="true"
+          ></span>
           <span className="visually-hidden">Próximo</span>
         </button>
       </div>
 
-      <div className="text-center mt-5">
-        <h2 className="mb-4">Bem-vindo à Página Inicial</h2>
-        <p className="lead">
-          Este é um exemplo simples de uma página inicial estilizada com
-          Bootstrap.
+      <div className="px-6 py-8">
+        <h1 className="text-4xl font-black text-center text-black font-sans tracking-tight">
+          Quem Somos
+        </h1>
+        <h2 className="text-3xl font-bold text-center text-[#409fbb] mb-4 font-sans tracking-tight">
+          Nosso Trabalho
+        </h2>
+        <p className="text-black text-base leading-relaxed text-center mx-auto max-w-md">
+          Somos um empresa com 10 anos de experiência, criada por um pintor com
+          mais de 20 anos de experiência no mercado, com o objetivo de
+          transformar os sonhos dos clientes em realidade, presando sempre a
+          qualidade, confiança e segurança. tendo também vasta experiência em
+          projetos residenciais e prediais, além da produção de design para seu
+          projeto.
         </p>
-        <button className="btn btn-primary mt-3">Saiba Mais</button>
       </div>
     </div>
   );
