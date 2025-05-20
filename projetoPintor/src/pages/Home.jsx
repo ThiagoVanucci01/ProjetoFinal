@@ -1,6 +1,6 @@
 import Imagem1 from "../assets/image1.png";
-import Imagem2 from "../assets/image1.png";
-import Imagem3 from "../assets/image1.png";
+import Imagem2 from "../assets/WhatsApp Image 2025-05-20 at 09.12.27.jpeg";
+import Imagem3 from "../assets/WhatsApp Image 2025-05-20 at 09.22.54.jpeg";
 
 const Home = () => {
   return (
