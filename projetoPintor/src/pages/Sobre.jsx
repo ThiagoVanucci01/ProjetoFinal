@@ -14,6 +14,23 @@ const Sobre = () => {
         Nossa missão é transformar ideias em realidade, ajudando nossos
         parceiros a alcançar seus objetivos.
       </p>
+      <div>
+<h2>Serviços que realizamos :</h2>
+<p>*Pinturas em geral;</p>
+<p>*Texturas;</p>
+<p>*Acabamentos finos;</p>
+<p>*Casas e Prédios.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
       <p>
         Entre em contato conosco para saber mais sobre nossos serviços e como
         podemos ajudar você.
