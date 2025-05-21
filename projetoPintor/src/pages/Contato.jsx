@@ -1,7 +1,8 @@
 const Contato = () => {
   return (
     <div className="container mt-5">
-      <h2 className="mb-4">Entre em Contato</h2>
+      <h2>Solicite seu</h2>
+      <h1 className="text-danger">Orçamento</h1>
       <p className="lead">
         Estamos aqui para ajudar! Preencha o formulário abaixo ou entre em
         contato conosco através das informações fornecidas.

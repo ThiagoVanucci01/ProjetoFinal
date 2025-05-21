@@ -1,6 +1,9 @@
-import Imagem1 from "../assets/image1.png";
-import Imagem2 from "../assets/WhatsApp Image 2025-05-20 at 09.12.27.jpeg";
-import Imagem3 from "../assets/WhatsApp Image 2025-05-20 at 09.22.54.jpeg";
+import ImagemAutoZone from "../assets/img/AutoZone.png";
+import ImagemCadeiras from "../assets/img/Cadeiras.jpeg";
+import ImagemDragoneira from "../assets/img/Dragoneira.png";
+import ImagemPredioCadeira from "../assets/img/PredioCadeira.png";
+import ImagemSenai from "../assets/img/SenaiCadeira.png";
+import ImagemPredio from "../assets/img/Predio.jpeg";
 
 const Home = () => {
   return (
@@ -10,7 +13,7 @@ const Home = () => {
         id="carouselExampleIndicators"
         className="carousel slide mx-auto"
         data-bs-ride="carousel"
-        style={{ maxWidth: "800px" }} // Define a largura máxima do carrossel
+        style={{ maxWidth: "800px", maxHeight: "400px", objectFit: "cover" }} // Define a largura máxima do carrossel
       >
         <div className="carousel-indicators">
           <button
@@ -33,16 +36,35 @@ const Home = () => {
             data-bs-slide-to="2"
             aria-label="Slide 3"
           ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="3"
+            aria-label="Slide 4"
+          ></button>
         </div>
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <img src={Imagem1} className="d-block w-100" alt="Imagem 1" />
+            <img src={ImagemPredio} className="d-block w-100" style={{ maxHeight: '400px', objectFit: 'cover' }} alt="Imagem 1" />
           </div>
           <div className="carousel-item">
-            <img src={Imagem2} className="d-block w-100" alt="Imagem 2" />
+            <img
+              src={ImagemDragoneira}
+              className="d-block w-100"
+              alt="Imagem 2"
+              style={{ maxHeight: '400px', objectFit: 'cover' }}
+            />
           </div>
           <div className="carousel-item">
-            <img src={Imagem3} className="d-block w-100" alt="Imagem 3" />
+            <img
+              src={ImagemAutoZone}
+              className="d-block w-100"
+              alt="Imagem 3"
+              style={{ maxHeight: '400px', objectFit: 'cover' }}
+            />
+          </div>
+          <div className="carousel-item">
+            <img src={ImagemSenai} className="d-block w-100" alt="Imagem 4" style={{ maxHeight: '400px', objectFit: 'cover' }} />
           </div>
         </div>
         <button
