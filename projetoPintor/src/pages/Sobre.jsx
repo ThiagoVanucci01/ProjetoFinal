@@ -3,7 +3,7 @@ const Sobre = () => {
     <div className="container mt-5">
       <h2 className="mb-4">Sobre Nós</h2>
       <p className="lead">
-        Bem-vindo à página Sobre Nós! Aqui você encontrará informações sobre a
+        Bem-vindo! Aqui você encontrará informações sobre a
         nossa missão, visão e valores.
       </p>
       <p>
