@@ -94,13 +94,12 @@ const Home = () => {
       </div>
 
       <div className="px-6 py-8">
-        <h1 className="text-4xl font-black text-center text-black font-sans tracking-tight">
+        <p></p>
+        <h1 className=" font-black text-center font-sans tracking-tight text-danger">
           Quem Somos
         </h1>
-        <h2 className="text-3xl font-bold text-center text-[#409fbb] mb-4 font-sans tracking-tight">
-          Nosso Trabalho
-        </h2>
-        <p className="text-black text-base leading-relaxed text-center mx-auto max-w-md">
+        <p></p>
+        <p className="text-black text-center m-4">
           Somos um empresa com 10 anos de experiência, criada por um pintor com
           mais de 20 anos de experiência no mercado, com o objetivo de
           transformar os sonhos dos clientes em realidade, presando sempre a

@@ -1,40 +1,49 @@
-import React from 'react';
+import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-dark text-white text-center py-3 mt-5">
+    <footer className="bg-dark text-white py-4 mt-5">
       <div className="container">
-        <p className="mb-0">
-          © 2025 Pinturas Tiago Duarte. Todos os direitos reservados.
-        </p>
+        {/* Texto centralizado dos direitos autorais */}
+        <div className="row">
+          <div className="col-12 text-center mb-2">
+            <p className="mb-0">
+              © 2025 Pinturas Tiago Duarte. Todos os direitos reservados.
+            </p>
+          </div>
+
+          {/* "Fale Conosco" em uma linha separada */}
+
+          <div className="col-12 text-center text-md-end small mb-1">
+            <span className="fw-bold text-warning">Fale Conosco</span>
+          </div>
+
+          {/* Telefone e Email abaixo, também alinhados à direita em telas maiores */}
+
+          <div className="col-12 text-center text-md-end small">
+            <p className="mb-1">
+              📞{" "}
+              <a
+                href="tel:+5514981117141"
+                className="text-warning text-decoration-none"
+              >
+                +55 (14) 98111-7141
+              </a>
+            </p>
+            <p className="mb-0">
+              ✉️{" "}
+              <a
+                href="mailto:goldpinturasjau@gmail.com"
+                className="text-warning text-decoration-none"
+              >
+                goldpinturasjau@gmail.com
+              </a>
+            </p>
+          </div>
+        </div>
       </div>
-      <p style={styles.text} className='text-white'>
-        📞 Telefone: <a href="tel:+551498111-7141" style={styles.link} className='text-warning' >+55 (14) 98111-7141</a>
-      </p>
-      <p style={styles.text} className='text-white'>
-        ✉️ Email: <a href="mailto:goldpinturasjau@gmail.com" style={styles.link} className='text-warning'>goldpinturasjau@gmail.com</a>
-      </p>
     </footer>
   );
-};
-
-const styles = {
-  footer: {
-    backgroundColor: '#f5f5f5',
-    padding: '20px',
-    textAlign: 'center',
-    marginTop: '50px',
-    borderTop: '1px solid #ddd'
-  },
-  text: {
-    margin: '5px 0',
-    fontSize: '16px',
-    color: '#333',
-  },
-  link: {
-    color: '#007BFF',
-    textDecoration: 'none',
-  }
 };
 
 export default Footer;
