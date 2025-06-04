@@ -36,7 +36,7 @@ const Header = () => {
           <Nav className="me-auto">
             <Nav.Link as={Link} to="/">Home</Nav.Link>
             <Nav.Link as={Link} to="/sobre#navbar">Sobre</Nav.Link>
-            <Nav.Link as={Link} to="/contato#navbar">Contato</Nav.Link>
+            <Nav.Link as={Link} to="/contato#navbar">Orçamento</Nav.Link>
           </Nav>
           <div className="d-flex align-items-center gap-3">
             {usuario ? (
