@@ -11,7 +11,7 @@ const Sobre = () => {
       </p>
       <h2>Nosso Diferencial</h2>
       <p>
-        Com quase 20 anos de experiência no mercado de pintura residencial,
+        Com muitos anos de experiência no mercado de pintura residencial,
         buscamos constantemente aprimorar nossos conhecimentos técnicos e
         acompanhar as inovações do setor. Combinamos materiais de alta
         performance com técnicas modernas, garantindo um acabamento superior em

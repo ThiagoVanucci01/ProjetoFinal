@@ -100,8 +100,8 @@ const Home = () => {
         </h1>
         <p></p>
         <p className="text-black text-center m-4">
-          Somos um empresa com 10 anos de experiência, criada por um pintor com
-          mais de 20 anos de experiência no mercado, com o objetivo de
+          Somos um empresa com 11 anos de experiência, criada por um pintor com
+          mais de 15 anos de experiência no mercado, com o objetivo de
           transformar os sonhos dos clientes em realidade, presando sempre a
           qualidade, confiança e segurança. tendo também vasta experiência em
           projetos residenciais e prediais, além da produção de design para seu
