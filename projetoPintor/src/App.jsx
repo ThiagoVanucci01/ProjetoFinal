@@ -11,6 +11,7 @@ import Home from "./pages/Home";
 import NaoEncontrado from "./pages/NaoEncontrado";
 import Footer from "./components/footer/Footer";
 import Login from "./pages/Login";
+import Perfil from "./pages/Perfil";
 
 function AppWrapper() {
   const location = useLocation();
@@ -26,6 +27,7 @@ function AppWrapper() {
           <Route path="/" element={<Home />} />
           <Route path="/sobre" element={<Sobre />} />
           <Route path="/contato" element={<Contato />} />
+          <Route path="/perfil" element={<Perfil />} />
           <Route path="*" element={<NaoEncontrado />} />
         </Routes>
       </main>

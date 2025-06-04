@@ -17,6 +17,26 @@ const Header = () => {
         localStorage.removeItem("devlogin");
       }
     }
+
+    const handleProfileUpdate = () => {
+      const updatedUser = localStorage.getItem("devlogin");
+      if (updatedUser) {
+        try {
+          setUsuario(JSON.parse(updatedUser));
+        } catch (error) {
+          console.error("Erro ao parsear usuário atualizado:", error);
+          setUsuario(null);
+        }
+      }
+    };
+
+    // Escuta o evento que Perfil dispara quando atualiza
+    window.addEventListener("profileUpdated", handleProfileUpdate);
+
+    // Cleanup pra evitar leaks
+    return () => {
+      window.removeEventListener("profileUpdated", handleProfileUpdate);
+    };
   }, []);
 
   const handleLogout = () => {
