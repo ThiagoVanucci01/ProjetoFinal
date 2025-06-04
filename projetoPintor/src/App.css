@@ -13,3 +13,8 @@
 main {
   flex: 1; /* Faz o conteúdo principal ocupar o espaço restante */
 }
+
+.tamanho {
+  width: 635px;
+  height: 400px;
+}
