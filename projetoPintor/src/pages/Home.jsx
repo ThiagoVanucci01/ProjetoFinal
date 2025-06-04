@@ -93,13 +93,13 @@ const Home = () => {
         </button>
       </div>
 
-      <div className="px-6 py-8">
+      <div className="px-6 py-8 row justify-content-center">
         <p></p>
         <h1 className=" font-black text-center font-sans tracking-tight text-danger">
           Quem Somos
         </h1>
         <p></p>
-        <p className="text-black text-center m-4">
+        <p className="text-black text-center m-4 col-7">
           Somos um empresa com 11 anos de experiência, criada por um pintor com
           mais de 15 anos de experiência no mercado, com o objetivo de
           transformar os sonhos dos clientes em realidade, presando sempre a

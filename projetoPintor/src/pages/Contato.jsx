@@ -2,17 +2,29 @@ import { useState } from "react";
 
 const Contato = () => {
   const [formEnviado, setFormEnviado] = useState(false);
-  const [nome, setNome] = useState("");
-  const [email, setEmail] = useState("");
+  const [cep, setCep] = useState("");
+  const [localServico, setLocalServico] = useState("");
   const [mensagem, setMensagem] = useState("");
   const [erro, setErro] = useState("");
+
+  const usuarioLogado = true; // Substitua pelo estado de autenticação real
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    if (!usuarioLogado) {
+      setErro("Você precisa estar logado para enviar o formulário.");
+      return;
+    }
+
     // Validações
-    if (nome.trim().length < 3) {
-      setErro("O nome deve ter pelo menos 3 letras.");
+    if (cep.trim().length < 8) {
+      setErro("O CEP deve ter pelo menos 8 números.");
+      return;
+    }
+
+    if (localServico.trim() === "") {
+      setErro("Por favor, selecione um local de serviço.");
       return;
     }
 
@@ -49,32 +61,42 @@ const Contato = () => {
         <form onSubmit={handleSubmit}>
           <div className="container">
             <div className="row">
-              <div className="col-7 mx-auto">
+              <div className="col-7 row mx-auto">
                 {erro && <div className="alert alert-danger">{erro}</div>}
-                <div className="mb-3">
-                  <label htmlFor="nome" className="form-label">
+                {!usuarioLogado && (
+                  <div className="alert alert-warning">
+                    Você precisa estar logado para enviar o formulário.
+                  </div>
+                )}
+                <div className="col-md-6">
+                  <label htmlFor="CEP" className="form-label">
                     CEP
                   </label>
                   <input
                     type="text"
                     className="form-control"
                     id="CEP"
-                    value={nome}
-                    onChange={(e) => setNome(e.target.value)}
+                    value={cep}
+                    onChange={(e) => setCep(e.target.value)}
                     placeholder="Digite seu CEP"
                   />
                 </div>
-                <div class="col-md-4">
-                  <label for="inputState" class="form-label">
-                  Local de serviço
+                <div className="col-md-6">
+                  <label htmlFor="inputState" className="form-label">
+                    Local de serviço
                   </label>
-                  <select id="inputState" class="form-select">
-                    <option selected>Selecione o local...</option>
-                    <option>Prédio</option>
-                    <option>Casa</option>
-                    <option>Loja</option>
-                    <option>Apartamento</option>
-                    <option>Outros...</option>
+                  <select
+                    id="inputState"
+                    className="form-select"
+                    value={localServico}
+                    onChange={(e) => setLocalServico(e.target.value)}
+                  >
+                    <option value="">Selecione o local...</option>
+                    <option value="Prédio">Prédio</option>
+                    <option value="Casa">Casa</option>
+                    <option value="Loja">Loja</option>
+                    <option value="Apartamento">Apartamento</option>
+                    <option value="Outros...">Outros...</option>
                   </select>
                 </div>
                 <div className="mb-3">
@@ -90,7 +112,11 @@ const Contato = () => {
                     placeholder="Escreva o serviço que deseja a ser efetuado"
                   ></textarea>
                 </div>
-                <button type="submit" className="btn btn-primary">
+                <button
+                  type="submit"
+                  className="btn btn-primary"
+                  disabled={!usuarioLogado}
+                >
                   Enviar
                 </button>
               </div>

@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="container">
         <div className="row">
           {/* Coluna Desenvolvedores */}
-          <div className="col-3 text-center mb-2">
+          <div className="col-12 col-md-3 text-center mb-2">
             <div className="text-center text-md-start small">
               <span className="fw-bold text-warning">Desenvolvedores</span>
             </div>
@@ -29,15 +29,15 @@ const Footer = () => {
           </div>
 
           {/* Coluna Direitos Autorais */}
-          <div className="col-6 text-center">
+          <div className="col-12 col-md-6 text-center">
             <p className="mb-0">
               © 2025 Pinturas Tiago Duarte. Todos os direitos reservados.
             </p>
           </div>
 
           {/* Coluna Fale Conosco */}
-          <div className="col text-center text-md-end small">
-            <div className="text-center text-md-end ">
+          <div className="col-12 col-md-3 text-center text-md-end small">
+            <div className="text-center text-md-end">
               <span className="fw-bold text-warning">Fale Conosco</span>
             </div>
             <p className="mb-1">
