@@ -6,10 +6,11 @@ const Contato = () => {
   const [localServico, setLocalServico] = useState("");
   const [mensagem, setMensagem] = useState("");
   const [erro, setErro] = useState("");
+  const [sucesso, setSucesso] = useState("");
 
   const usuarioLogado = true; // Substitua pelo estado de autenticação real
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!usuarioLogado) {
@@ -34,9 +35,32 @@ const Contato = () => {
     }
 
     setErro("");
-    setFormEnviado(true);
+    setSucesso("");
 
-    // Aqui você pode adicionar lógica de envio ao backend se necessário
+    // Envio para a API
+    try {
+      const response = await fetch('http://www.tppinturas.somee.com/api/Mensagens', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'accept': 'text/plain'
+        },
+        body: JSON.stringify({
+          descricao: mensagem,
+          cep: cep,
+          localdeServico: localServico
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error("Erro ao enviar mensagem. Tente novamente.");
+      }
+
+      setFormEnviado(true);
+      setSucesso("Mensagem enviada com sucesso!");
+    } catch (error) {
+      setErro(error.message);
+    }
   };
 
   return (
@@ -63,6 +87,7 @@ const Contato = () => {
             <div className="row">
               <div className="col-7 row mx-auto">
                 {erro && <div className="alert alert-danger">{erro}</div>}
+                {sucesso && <div className="alert alert-success">{sucesso}</div>}
                 {!usuarioLogado && (
                   <div className="alert alert-warning">
                     Você precisa estar logado para enviar o formulário.

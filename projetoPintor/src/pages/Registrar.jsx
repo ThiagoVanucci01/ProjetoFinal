@@ -2,49 +2,51 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import HeaderSimples from "../components/header/HeaderSimples";
 
-function Login() {
+function Registrar() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const [confirmarSenha, setConfirmarSenha] = useState("");
   const [mensagem, setMensagem] = useState("");
   const [erros, setErros] = useState({});
+
   const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
 
-    // Validação simples
     let errosTemp = {};
     if (!email) errosTemp.email = "E-mail é obrigatório";
     if (!senha) errosTemp.senha = "Senha é obrigatória";
+    if (senha !== confirmarSenha)
+      errosTemp.confirmarSenha = "As senhas não coincidem";
     setErros(errosTemp);
 
     if (Object.keys(errosTemp).length > 0) return;
 
     try {
       const response = await fetch(
-        "http://www.tppinturas.somee.com/Users/login?useCookies=false&useSessionCookies=false",
+        "http://www.tppinturas.somee.com/Users/register",
         {
           method: "POST",
-          headers: {
-            accept: "application/json",
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email, password: senha }),
         }
       );
 
       if (!response.ok) {
-        throw new Error("Erro ao fazer login");
+        const errorData = await response.json();
+        const firstError = Object.values(errorData.errors)[0][0];
+        throw new Error(firstError);
       }
 
-      const data = await response.json();
-      const token = data.token;
-      localStorage.setItem("token", token);
+      await response.json();
+      setMensagem("Registro feito com sucesso!");
 
-      setMensagem("Login realizado com sucesso!");
-      navigate("/"); // Redireciona para a Home
+      setTimeout(() => {
+        navigate("/login");
+      }, 2000);
     } catch (error) {
-      setMensagem("Falha no login: " + error.message);
+      setMensagem("Falha no registro: " + error.message);
     }
   };
 
@@ -52,12 +54,12 @@ function Login() {
     <>
       <HeaderSimples />
       <div className="d-flex justify-content-center align-items-center min-vh-100">
-        <div className="card LoginCard border-3 border-black p-4 col-12 col-sm-8 col-md-6 col-lg-4">
-          <form onSubmit={handleLogin}>
-            <h1 className="text-center mb-4">Login</h1>
+        <div className="card border-3 border-black p-4 col-12 col-sm-8 col-md-6 col-lg-4">
+          <form onSubmit={handleRegister}>
+            <h1 className="text-center mb-4">Registrar</h1>
 
             <div className="mb-3">
-              <label className="form-label" htmlFor="frmEmail">
+              <label htmlFor="frmEmail" className="form-label">
                 E-mail:
               </label>
               <input
@@ -67,7 +69,6 @@ function Login() {
                   erros.email ? "is-invalid" : ""
                 }`}
                 type="email"
-                name="frmEmail"
                 id="frmEmail"
               />
               {erros.email && (
@@ -76,7 +77,7 @@ function Login() {
             </div>
 
             <div className="mb-3">
-              <label className="form-label" htmlFor="frmSenha">
+              <label htmlFor="frmSenha" className="form-label">
                 Senha:
               </label>
               <input
@@ -86,7 +87,6 @@ function Login() {
                   erros.senha ? "is-invalid" : ""
                 }`}
                 type="password"
-                name="frmSenha"
                 id="frmSenha"
               />
               {erros.senha && (
@@ -94,8 +94,26 @@ function Login() {
               )}
             </div>
 
+            <div className="mb-3">
+              <label htmlFor="frmConfirmarSenha" className="form-label">
+                Confirmar Senha:
+              </label>
+              <input
+                value={confirmarSenha}
+                onChange={(e) => setConfirmarSenha(e.target.value)}
+                className={`form-control bg-transparent border-black ${
+                  erros.confirmarSenha ? "is-invalid" : ""
+                }`}
+                type="password"
+                id="frmConfirmarSenha"
+              />
+              {erros.confirmarSenha && (
+                <div className="text-danger mt-1">{erros.confirmarSenha}</div>
+              )}
+            </div>
+
             <div className="d-flex justify-content-center">
-              <button className="btn btn-primary w-50 m-2">Entrar</button>
+              <button className="btn btn-primary w-50 m-2">Registrar</button>
             </div>
             {mensagem && <div className="text-center mt-3">{mensagem}</div>}
           </form>
@@ -105,4 +123,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Registrar;
