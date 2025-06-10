@@ -45,7 +45,10 @@ const Home = () => {
         </div>
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <img src={ImagemPredio} className="d-block w-100" style={{ maxHeight: '400px', objectFit: 'cover' }} alt="Imagem 1" />
+            <img 
+            src={ImagemPredio} 
+            className="d-block w-100" 
+            style={{ maxHeight: '400px', objectFit: 'cover' }} alt="Imagem 1" />
           </div>
           <div className="carousel-item">
             <img
