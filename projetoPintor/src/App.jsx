@@ -12,10 +12,12 @@ import NaoEncontrado from "./pages/NaoEncontrado";
 import Footer from "./components/footer/Footer";
 import Login from "./pages/Login";
 import Perfil from "./pages/Perfil";
+import Registrar from "./pages/Registrar";
 
 function AppWrapper() {
   const location = useLocation();
-  const hideHeaderAndFooter = location.pathname === "/login";
+  const hideHeaderAndFooter =
+    location.pathname === "/login" || location.pathname === "/registrar";
 
   return (
     <>
@@ -24,6 +26,7 @@ function AppWrapper() {
       <main>
         <Routes>
           <Route path="/login" element={<Login />} />
+          <Route path="/registrar" element={<Registrar />} />
           <Route path="/" element={<Home />} />
           <Route path="/sobre" element={<Sobre />} />
           <Route path="/contato" element={<Contato />} />
