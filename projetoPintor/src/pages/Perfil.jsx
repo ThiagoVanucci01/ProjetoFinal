@@ -8,7 +8,6 @@ const Perfil = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [profile, setProfile] = useState({
-    nome: "",
     email: "",
     senha: ""
   });
@@ -29,7 +28,6 @@ const Perfil = () => {
 
   const handleSave = () => {
     if (
-      !editedProfile.nome.trim() ||
       !editedProfile.email.includes("@") ||
       editedProfile.senha.length < 6
     ) {
@@ -76,37 +74,7 @@ const Perfil = () => {
         >
           <h1 className="text-center mb-4 text-white">Meu Perfil</h1>
 
-          {/* Nome */}
-          <div className="mb-3">
-            <label className="form-label text-gray-300" htmlFor="nome">
-              Nome:
-            </label>
-            {isEditing ? (
-              <input
-                type="text"
-                id="nome"
-                value={editedProfile.nome}
-                onChange={e => handleChange("nome", e.target.value)}
-                className="form-control"
-                style={{
-                  backgroundColor: "#374151",
-                  borderColor: "#4b5563",
-                  color: "white"
-                }}
-              />
-            ) : (
-              <div
-                className="p-2 rounded"
-                style={{
-                  backgroundColor: "#374151",
-                  border: "1px solid #4b5563",
-                  color: "white"
-                }}
-              >
-                {profile.nome}
-              </div>
-            )}
-          </div>
+        
 
           {/* Email */}
           <div className="mb-3">

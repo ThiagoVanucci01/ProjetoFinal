@@ -42,7 +42,9 @@ function Login() {
       localStorage.setItem("token", token);
 
       setMensagem("Login realizado com sucesso!");
-      navigate("/"); // Redireciona para a Home
+      navigate("/"); // eRedireciona para a Hom
+      //Salvar os dados do usuário no localStorage
+      localStorage.setItem("devlogin", JSON.stringify({ email, token }));
     } catch (error) {
       setMensagem("Falha no login: " + error.message);
     }
