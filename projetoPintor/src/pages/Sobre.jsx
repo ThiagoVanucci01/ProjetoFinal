@@ -1,8 +1,7 @@
 import ImagemTextura from "../assets/img/Textura.jpg";
 import AEJ from "../assets/img/AEJ.jpg";
 import altopadrao from "../assets/img/Altopadrão.png";
-
-
+import tt from "../assets/img/Cadeiras.jpeg";
 
 const Sobre = () => {
   return (
@@ -11,9 +10,9 @@ const Sobre = () => {
 
       <section className="mb-5">
         <p className="lead">
-          Bem-vindo! Aqui você encontrará informações sobre nossa missão, visão e
-          valores. Somos uma equipe dedicada a oferecer soluções em pintura com
-          foco em inovação, qualidade e comprometimento. Trabalhamos para
+          Bem-vindo! Aqui você encontrará informações sobre nossa missão, visão
+          e valores. Somos uma equipe dedicada a oferecer soluções em pintura
+          com foco em inovação, qualidade e comprometimento. Trabalhamos para
           transformar ideias em realidade, ajudando nossos clientes a alcançar
           resultados que superam expectativas.
         </p>
@@ -26,10 +25,10 @@ const Sobre = () => {
           buscamos constantemente aprimorar nossos conhecimentos técnicos e
           acompanhar as inovações do setor. Combinamos materiais de alta
           performance com técnicas modernas, garantindo um acabamento superior
-          em paredes, portas e massas. Além disso, adotamos práticas sustentáveis,
-          reduzindo o desperdício e os resíduos no processo. Nossa missão é
-          transformar ideias em realidade, ajudando nossos parceiros a alcançar
-          seus objetivos.
+          em paredes, portas e massas. Além disso, adotamos práticas
+          sustentáveis, reduzindo o desperdício e os resíduos no processo. Nossa
+          missão é transformar ideias em realidade, ajudando nossos parceiros a
+          alcançar seus objetivos.
         </p>
       </section>
 
@@ -56,39 +55,50 @@ const Sobre = () => {
         <h2 className="text-primary">Serviços que realizamos</h2>
         <div className="row">
           <div className="col-md-6 mb-3">
-          <ul className="mt-3">
+            <ul className="mt-3">
               <li>Texturas</li>
             </ul>
-            <img src={ImagemTextura} className="img-fluid rounded shadow" alt="Textura" />
+            <img
+              src={ImagemTextura}
+              className="tamanho"
+              alt="Textura"
+            />
+            <ul className="mt-3">
+              <li>Casas e Prédios</li>
+            </ul>
+            <img src={AEJ} className="tamanho" alt="Prédio" />
           </div>
           <div className="col-md-6 mb-3">
-          <ul className="mt-3">
-          <li>Casas e Prédios</li>
-            </ul>
-            <img src={AEJ} className="img-fluid rounded shadow" alt="Prédio" />
             <ul className="mt-3">
-            <li>Acabamentos finos</li>
+              <li>Alto Padrão</li>
             </ul>
-            <img src={altopadrao} className="tamanho" alt="" />
+            <img src={altopadrao} className="tamanho" alt="Prédio" />
+            <ul className="mt-3">
+              <li>Trabalhos com cadeira suspensa</li>
+            </ul>
+            <img
+              src={tt}
+              className="tamanho"
+              alt="Textura"
+            />
           </div>
         </div>
       </section>
 
-      
       <section className="text-center">
-        <button 
-          className="btn btn-primary" 
-          onClick={() => window.location.href = '/contato'}
+        <button
+          className="btn btn-primary"
+          onClick={() => (window.location.href = "/contato")}
           aria-label="Solicitar orçamento agora"
-  style={{
-    backgroundColor: '#0048ff',
-    color: '#fff',
-    padding: '12px 24px',
-    fontSize: '20px',
-    border: 'none',
-    borderRadius: '20px',
-    cursor: 'pointer'
-  }}
+          style={{
+            backgroundColor: "#0048ff",
+            color: "#fff",
+            padding: "12px 24px",
+            fontSize: "20px",
+            border: "none",
+            borderRadius: "20px",
+            cursor: "pointer",
+          }}
         >
           Faça seu orçamento agora!
         </button>
