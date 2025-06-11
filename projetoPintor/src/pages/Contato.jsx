@@ -39,7 +39,7 @@ const Contato = () => {
 
     // Envio para a API
     try {
-      const response = await fetch('http://www.tppinturas.somee.com/api/Mensagens', {
+      const response = await fetch('https://www.tppinturas.somee.com/api/Mensagens', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

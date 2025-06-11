@@ -52,7 +52,7 @@ function Registrar() {
 
     try {
       const response = await fetch(
-        "http://www.tppinturas.somee.com/Users/register",
+        "https://www.tppinturas.somee.com/Users/register",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

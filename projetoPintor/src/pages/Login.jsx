@@ -22,7 +22,7 @@ function Login() {
 
     try {
       const response = await fetch(
-        "http://www.tppinturas.somee.com/Users/login?useCookies=false&useSessionCookies=false",
+        "https://www.tppinturas.somee.com/Users/login?useCookies=false&useSessionCookies=false",
         {
           method: "POST",
           headers: {

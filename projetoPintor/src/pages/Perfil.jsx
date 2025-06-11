@@ -22,7 +22,7 @@ const Perfil = () => {
     const fetchPerfil = async () => {
       try {
         const response = await fetch(
-          `http://www.tppinturas.somee.com/api/Perfil/GetProfileByEmail/${encodeURIComponent(email)}`,
+          `https://www.tppinturas.somee.com/api/Perfil/GetProfileByEmail/${encodeURIComponent(email)}`,
           {
             headers: {
               accept: "text/plain",
@@ -62,7 +62,7 @@ const Perfil = () => {
       let response;
       if (perfil.perfilId) {
         response = await fetch(
-          `http://www.tppinturas.somee.com/api/Perfil/UpdateProfileByEmail/${encodeURIComponent(email)}`,
+          `https://www.tppinturas.somee.com/api/Perfil/UpdateProfileByEmail/${encodeURIComponent(email)}`,
           {
             method: "PUT",
             headers: {
@@ -79,7 +79,7 @@ const Perfil = () => {
         );
       } else {
         response = await fetch(
-          `http://www.tppinturas.somee.com/api/Perfil/CreateProfile/${encodeURIComponent(email)}`,
+          `https://www.tppinturas.somee.com/api/Perfil/CreateProfile/${encodeURIComponent(email)}`,
           {
             method: "PUT",
             headers: {
@@ -113,7 +113,7 @@ const Perfil = () => {
     }
     try {
       const response = await fetch(
-        `http://www.tppinturas.somee.com/api/Perfil/ChangePassword/${encodeURIComponent(email)}`,
+        `https://www.tppinturas.somee.com/api/Perfil/ChangePassword/${encodeURIComponent(email)}`,
         {
           method: "PUT",
           headers: {
