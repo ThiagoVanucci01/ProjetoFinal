@@ -13,6 +13,7 @@ import Footer from "./components/footer/Footer";
 import Login from "./pages/Login";
 import Perfil from "./pages/Perfil";
 import Registrar from "./pages/Registrar";
+import Servicos from "./pages/Servicos";
 
 function AppWrapper() {
   const location = useLocation();
@@ -29,6 +30,7 @@ function AppWrapper() {
           <Route path="/registrar" element={<Registrar />} />
           <Route path="/" element={<Home />} />
           <Route path="/sobre" element={<Sobre />} />
+          <Route path="/servicos" element={<Servicos />} />
           <Route path="/contato" element={<Contato />} />
           <Route path="/perfil" element={<Perfil />} />
           <Route path="*" element={<NaoEncontrado />} />
