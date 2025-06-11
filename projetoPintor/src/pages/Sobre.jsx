@@ -1,7 +1,7 @@
 import ImagemTextura from "../assets/img/Textura.jpg";
 import AEJ from "../assets/img/AEJ.jpg";
 import altopadrao from "../assets/img/Altopadrão.png";
-import tt from "../assets/img/Cadeiras.jpeg";
+import ju from "../assets/img/Junior.jpeg";
 
 const Sobre = () => {
   return (
@@ -77,7 +77,7 @@ const Sobre = () => {
               <li>Trabalhos com cadeira suspensa</li>
             </ul>
             <img
-              src={tt}
+              src={ju}
               className="tamanho"
               alt="Textura"
             />

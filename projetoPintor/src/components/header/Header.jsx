@@ -7,6 +7,7 @@ import {
   Dropdown,
   Button,
   Image,
+  NavDropdown,           // <-- novo import
 } from "react-bootstrap";
 import Logo from "../../assets/img/logo.png";
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -38,13 +39,8 @@ const Header = () => {
       }
     };
 
-    // Escuta o evento que Perfil dispara quando atualiza
     window.addEventListener("profileUpdated", handleProfileUpdate);
-
-    // Cleanup pra evitar leaks
-    return () => {
-      window.removeEventListener("profileUpdated", handleProfileUpdate);
-    };
+    return () => window.removeEventListener("profileUpdated", handleProfileUpdate);
   }, []);
 
   const handleLogout = () => {
@@ -59,25 +55,19 @@ const Header = () => {
         <Link className="navbar-brand" to="/">
           <img src={Logo} alt="Logo" style={{ height: "40px" }} />
         </Link>
+
         <Navbar.Toggle aria-controls="navbarNav" />
         <Navbar.Collapse id="navbarNav">
           <Nav className="me-auto">
-            <Nav.Link as={Link} to="/">
-              Home
-            </Nav.Link>
-            <Nav.Link as={Link} to="/sobre#navbar">
-              Sobre
-            </Nav.Link>
-            <Nav.Link as={Link} to="/contato#navbar">
-              Orçamento
-            </Nav.Link>
+            <Nav.Link as={Link} to="/">Home</Nav.Link>
+            <Nav.Link as={Link} to="/sobre#navbar">Sobre</Nav.Link>
+            <Nav.Link as={Link} to="/contato#navbar">Orçamento</Nav.Link>
+            <Nav.Link as={Link} to="/Servicos#navbar">Nossos Serviços</Nav.Link>
           </Nav>
+
           <div className="d-flex align-items-center gap-3">
             {usuario ? (
               <>
-                {/* <span className="text-light d-none d-md-block">
-                  Olá, {usuario.nome.split(" ")[0]}!
-                </span> */}
                 <Dropdown align="start">
                   <Dropdown.Toggle
                     variant="light"
@@ -85,9 +75,7 @@ const Header = () => {
                     style={{ width: "40px", height: "40px" }}
                   >
                     <Image
-                      src={`https://ui-avatars.com/api/?name=${encodeURIComponent(
-                        usuario.nome
-                      )}&background=2563eb&color=fff`}
+                      src={`https://ui-avatars.com/api/?name=${encodeURIComponent(usuario.nome)}&background=2563eb&color=fff`}
                       roundedCircle
                       fluid
                       alt={usuario.nome}
