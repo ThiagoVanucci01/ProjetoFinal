@@ -33,6 +33,14 @@ function AppWrapper() {
           <Route path="/perfil" element={<Perfil />} />
           <Route path="*" element={<NaoEncontrado />} />
         </Routes>
+
+        <a
+          href="https://w.app/tggfzk"
+          class="btn btn-success whatsapp-button"
+          target="_blank"
+        >
+          <i class="bi bi-whatsapp"></i>
+        </a>
       </main>
 
       {!hideHeaderAndFooter && <Footer />}

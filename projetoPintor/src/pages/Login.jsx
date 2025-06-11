@@ -57,7 +57,6 @@ function Login() {
         <div className="card LoginCard border-3 border-black p-4 col-12 col-sm-8 col-md-6 col-lg-4">
           <form onSubmit={handleLogin}>
             <h1 className="text-center mb-4">Login</h1>
-
             <div className="mb-3">
               <label className="form-label" htmlFor="frmEmail">
                 E-mail:
@@ -76,7 +75,6 @@ function Login() {
                 <div className="text-danger mt-1">{erros.email}</div>
               )}
             </div>
-
             <div className="mb-3">
               <label className="form-label" htmlFor="frmSenha">
                 Senha:
@@ -96,8 +94,17 @@ function Login() {
               )}
             </div>
 
-            <div className="d-flex justify-content-center">
-              <button className="btn btn-primary w-50 m-2">Entrar</button>
+            <div className="d-flex gap-2 mb-3">
+              <button className="btn btn-primary flex-fill" type="submit">
+                Entrar
+              </button>
+              <button
+                type="button"
+                className="btn btn-primary flex-fill"
+                onClick={() => navigate("/Registrar")}
+              >
+                Registrar
+              </button>
             </div>
             {mensagem && <div className="text-center mt-3">{mensagem}</div>}
           </form>

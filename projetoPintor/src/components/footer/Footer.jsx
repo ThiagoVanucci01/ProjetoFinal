@@ -43,7 +43,7 @@ const Footer = () => {
             <p className="mb-1">
               📞{" "}
               <a
-                href="tel:+5514981117141"
+                href="https://w.app/tggfzk"
                 className="text-warning text-decoration-none"
               >
                 +55 (14) 98111-7141
