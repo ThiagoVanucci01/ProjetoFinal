@@ -17,7 +17,7 @@ import Registrar from "./pages/Registrar";
 function AppWrapper() {
   const location = useLocation();
   const hideHeaderAndFooter =
-    location.pathname === "/login" || location.pathname === "/registrar";
+    (location.pathname === "/login" || location.pathname === "/registrar");
 
   return (
     <>

@@ -40,6 +40,7 @@ function Login() {
       const data = await response.json();
       const token = data.token;
       localStorage.setItem("token", token);
+      localStorage.setItem("email", email);
 
       setMensagem("Login realizado com sucesso!");
       navigate("/"); // eRedireciona para a Hom
@@ -101,7 +102,7 @@ function Login() {
               <button
                 type="button"
                 className="btn btn-primary flex-fill"
-                onClick={() => navigate("/Registrar")}
+                onClick={() => navigate("/registrar")}
               >
                 Registrar
               </button>
