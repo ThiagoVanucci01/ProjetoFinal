@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import {
   Navbar,
   Nav,
@@ -13,6 +13,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 
 const Header = () => {
   const [usuario, setUsuario] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const salvaUsuario = localStorage.getItem("devlogin");
@@ -49,7 +50,7 @@ const Header = () => {
   const handleLogout = () => {
     localStorage.removeItem("devlogin");
     setUsuario(null);
-    window.location.reload();
+    navigate("/");
   };
 
   return (
@@ -99,7 +100,11 @@ const Header = () => {
                     </Dropdown.Item>
                     <Dropdown.Item
                       onClick={handleLogout}
+                      nav
                       className="text-danger"
+                      // redirecionar para a página de login após o logout
+                      as={Link}
+                      to="/"
                     >
                       <i className="bi bi-box-arrow-right me-2"></i> Sair
                     </Dropdown.Item>

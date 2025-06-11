@@ -1,28 +1,28 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 
 const Perfil = () => {
   const [perfil, setPerfil] = useState({ nome: "", celular: "", perfilId: "" });
   const [carregando, setCarregando] = useState(true);
   const [mensagem, setMensagem] = useState("");
-  const [modoEdicao, setModoEdicao] = useState(false);
   const [senha, setSenha] = useState("");
   const [msgSenha, setMsgSenha] = useState("");
 
   const email = localStorage.getItem("email");
   const token = localStorage.getItem("token");
+  const navigate = useNavigate();
 
   useEffect(() => {
+    // Redireciona se não estiver logado
+    if (!email || !token) {
+      navigate("/");
+      return;
+    }
+
     const fetchPerfil = async () => {
-      if (!email) {
-        setCarregando(false);
-        setModoEdicao(true);
-        return;
-      }
       try {
         const response = await fetch(
-          `http://www.tppinturas.somee.com/api/Perfil/GetProfileByEmail/${encodeURIComponent(
-            email
-          )}`,
+          `http://www.tppinturas.somee.com/api/Perfil/GetProfileByEmail/${encodeURIComponent(email)}`,
           {
             headers: {
               accept: "text/plain",
@@ -37,19 +37,19 @@ const Perfil = () => {
             celular: data.celular || "",
             perfilId: data.perfilId || "",
           });
-          setModoEdicao(true);
-        } else {
-          setModoEdicao(true);
+        } else if (response.status === 401) {
+          // Token inválido, redireciona
+          navigate("/");
         }
       } catch (error) {
         setMensagem("Erro ao buscar perfil.");
-        setModoEdicao(true);
       } finally {
         setCarregando(false);
       }
     };
+
     fetchPerfil();
-  }, [email, token]);
+  }, [email, token, navigate]);
 
   const handleChange = (e) => {
     setPerfil({ ...perfil, [e.target.name]: e.target.value });
@@ -61,11 +61,8 @@ const Perfil = () => {
     try {
       let response;
       if (perfil.perfilId) {
-        // Atualizar perfil existente
         response = await fetch(
-          `http://www.tppinturas.somee.com/api/Perfil/UpdateProfileByEmail/${encodeURIComponent(
-            email
-          )}`,
+          `http://www.tppinturas.somee.com/api/Perfil/UpdateProfileByEmail/${encodeURIComponent(email)}`,
           {
             method: "PUT",
             headers: {
@@ -81,11 +78,8 @@ const Perfil = () => {
           }
         );
       } else {
-        // Criar novo perfil
         response = await fetch(
-          `http://www.tppinturas.somee.com/api/Perfil/CreateProfile/${encodeURIComponent(
-            email
-          )}`,
+          `http://www.tppinturas.somee.com/api/Perfil/CreateProfile/${encodeURIComponent(email)}`,
           {
             method: "PUT",
             headers: {
@@ -111,9 +105,7 @@ const Perfil = () => {
     }
   };
 
-  // Função para alterar a senha
-  const handleChangePassword = async (e) => {
-    e.preventDefault();
+  const handleChangePassword = async () => {
     setMsgSenha("");
     if (!senha) {
       setMsgSenha("Digite a nova senha.");
@@ -148,53 +140,63 @@ const Perfil = () => {
   }
 
   return (
-    <div className="container mt-5">
-      <h2>Perfil</h2>
-      {mensagem && <div className="alert alert-info">{mensagem}</div>}
-      <form onSubmit={handleSubmit} className="col-12 col-md-6">
-        <div className="mb-3">
-          <label className="form-label">Nome</label>
-          <input
-            type="text"
-            className="form-control"
-            name="nome"
-            value={perfil.nome}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="mb-3">
-          <label className="form-label">Celular</label>
-          <input
-            type="text"
-            className="form-control"
-            name="celular"
-            value={perfil.celular}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button type="submit" className="btn btn-primary">
-          Salvar
-        </button>
-      </form>
+    <div className="d-flex justify-content-center align-items-center min-vh-100">
+      <div className="card border-3 border-black p-4 col-12 col-sm-10 col-md-7 col-lg-5">
+        <h2 className="text-center mb-4">Perfil</h2>
 
-      <form onSubmit={handleChangePassword} className="col-12 col-md-6 mt-4">
-        <div className="mb-3">
-          <label className="form-label">Nova Senha</label>
-          <input
-            type="password"
-            className="form-control"
-            value={senha}
-            onChange={(e) => setSenha(e.target.value)}
-            placeholder="Digite a nova senha"
-          />
-        </div>
-        <button type="submit" className="btn btn-warning">
-          Alterar Senha
-        </button>
-        {msgSenha && <div className="mt-2 alert alert-info">{msgSenha}</div>}
-      </form>
+        {mensagem && <div className="alert alert-info text-center">{mensagem}</div>}
+
+        <form onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <label className="form-label">Nome</label>
+            <input
+              type="text"
+              className="form-control bg-transparent border-black"
+              name="nome"
+              value={perfil.nome}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="mb-3">
+            <label className="form-label">Celular</label>
+            <input
+              type="text"
+              className="form-control bg-transparent border-black"
+              name="celular"
+              value={perfil.celular}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="mb-3">
+            <label className="form-label">Nova Senha</label>
+            <input
+              type="password"
+              className="form-control bg-transparent border-black"
+              value={senha}
+              onChange={(e) => setSenha(e.target.value)}
+              placeholder="Digite a nova senha"
+            />
+            {msgSenha && <div className="mt-2 alert alert-info">{msgSenha}</div>}
+          </div>
+
+          <div className="d-flex gap-2 mt-3">
+            <button type="submit" className="btn btn-primary flex-fill">
+              Salvar Dados
+            </button>
+            <button
+              type="button"
+              className="btn btn-warning flex-fill"
+              onClick={handleChangePassword}
+            >
+              Alterar Senha
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
